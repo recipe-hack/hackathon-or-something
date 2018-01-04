@@ -1,35 +1,41 @@
 const http = require('http');
+const axios = require('axios');
 
-const test = (req, res) => {
-  res.json({ msg: 'online' });
+// This probably isn't needed as we can get the same thing by not including any info in the queries
+const randomRecipes = (req, res) => {
+  let rawData;
+  axios({
+    method: 'get',
+    url: 'http://www.recipepuppy.com/api/'
+  })
+    .then(result => {
+      rawData = result.data;
+      res.json(rawData);
+    })
+    .catch(err => {
+      console.log(err.response.data);
+    });
 };
 
 const recipes = (req, res) => {
-  let rawData = '';
-  console.log(req.params);
-  const ingredients = 'sugar, bacon, peppers';
-  const food = '';
-  http
-    .get(`http://www.recipepuppy.com/api/?i=${ingredients}&q=${food}`, res => {
-      res.setEncoding('utf8');
-      res.on('data', chunk => {
-        rawData += chunk;
-      });
-      res.on('end', () => {
-        try {
-          const parsedData = JSON.parse(rawData);
-          var recipeResults = parsedData.results;
-        } catch (e) {
-          console.error(e.message);
-        }
-      });
+  let rawData;
+  const ingredients = req.query.ingredients;
+  const food = req.query.food;
+  const page = req.query.p;
+  axios({
+    method: 'get',
+    url: `http://www.recipepuppy.com/api/?i=${ingredients}&q=${food}&p=${page}`
+  })
+    .then(result => {
+      rawData = result.data;
+      res.json(rawData);
     })
-    .on('error', e => {
-      console.error(`Got error: ${e.message}`);
+    .catch(err => {
+      console.log(err.response.data);
     });
 };
 
 module.exports = {
-  test,
+  randomRecipes,
   recipes
 };

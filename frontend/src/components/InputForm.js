@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+const axios = require('axios');
 // import './InputForm.css';
 
 class InputForm extends Component {
