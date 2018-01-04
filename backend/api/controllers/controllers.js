@@ -6,27 +6,15 @@ const test = (req, res) => {
 };
 
 const testget = (req, res) => {
-  // let rawData = '';
-  // http.get('http://www.recipepuppy.com/api/?i=sugar', (res) => {
-  //   res.setEncoding('utf8');
-  //   res.on('data', (chunk) => { rawData += chunk; });
-  //   res.on('end', () => {
-  //     try {
-  //       const parsedData = JSON.parse(rawData);
-  //       console.log(parsedData.results);
-  //     } catch (e) {
-  //       console.error(e.message);
-  //     }
-  //   });
-  // }).on('error', (e) => {
-  //   console.error(`Got error: ${e.message}`);
-  // });
-  // res.json(rawData);
+  let rawData;
   axios({
     method:'get',
     url:'http://www.recipepuppy.com/api/?i=sugar',
-  }).then((res) => {
-    console.log(res.data);
+  }).then((result) => {
+    rawData = result.data;
+    res.json(rawData);
+  }).catch((err) => {
+    console.log(err.response.data);
   });
 };
 
