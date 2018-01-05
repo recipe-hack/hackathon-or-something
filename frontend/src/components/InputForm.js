@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import RecipeCard from './recipeCard/recipeCard';
 import Favorites from './Favorites/Favorites';
-const axios = require('axios');
 import './InputForm.css';
+const axios = require('axios');
+
 
 class InputForm extends Component {
   constructor(props) {
