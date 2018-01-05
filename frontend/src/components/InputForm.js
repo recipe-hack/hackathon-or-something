@@ -9,18 +9,24 @@ class InputForm extends Component {
     this.state = {
       ingredients: '',
       food: '',
-      recipes: []
+      recipes: [],
+      favorites: [],
     };
 
     this.submit = this.submit.bind(this);
+    this.favorite = this.favorite.bind(this);
+  }
+  favorite(recipe){
+    let newArr = this.state.favorites;
+    newArr.push(recipe);
+    this.setState({favorites: newArr});
+    console.log(this.state.favorites);
   }
 
   submit(e) {
     e.preventDefault();
-
     const {ingredients, food} = this.state;
     return axios({method: 'get', url: `http://localhost:5000/api/recipes/?ingredients=${this.state.ingredients}&food=${this.state.food}&p=2`}).then((results) => {
-      console.log(results.data.results)
       return results.data.results;
     }).then((data) => {
       let recipes = data.map((recipe, index) => {
@@ -28,7 +34,9 @@ class InputForm extends Component {
           <div className="card">
             <img className="card-img-top" src={recipe.thumbnail || 'http://img.recipepuppy.com/9.jpg'} alt={recipe.title}></img>
             <div className="card-body">
+              <div className="">{recipe.title}</div>
               <a className='btn-primary btn' href={recipe.href} target="_blank">View Recipe</a>
+              <button className='btn btn-primary' onClick={() => this.favorite({recipe})}>favorite</button>
             </div>
           </div>
         </div>)
