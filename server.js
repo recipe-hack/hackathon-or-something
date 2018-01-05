@@ -14,7 +14,7 @@ const corsOptions = {
   credentials: true // enable set cookie
 };
 
-const port = process.env.PORT || '5000';
+// const port = process.env.PORT || '5000';
 
 app.set('port', port);
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +23,7 @@ app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, 'frontend/public')));
 routes(app);
 
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
-server.listen(port, () => console.log(`Running on path: ${port}`));
+// server.listen(port, () => console.log(`Running on path: ${port}`));
+app.listen(process.env.PORT || 5000);
