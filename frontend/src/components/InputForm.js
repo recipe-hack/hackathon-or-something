@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-const axios = require('axios');
+//const axios = require('axios');
 // import './InputForm.css';
 
 class InputForm extends Component {
@@ -9,7 +9,7 @@ class InputForm extends Component {
       ingredients: '',
       food: '',
     };
-    
+
     this.submit = this.submit.bind(this);
   }
 
