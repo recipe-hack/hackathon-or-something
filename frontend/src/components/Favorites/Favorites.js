@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 class Favorites extends Component {
-  constructor(props) {
-    super(props)
+  constructor(props){
+    super(props);
     this.state = {
       favorites: [],
     }
   }
-
+  componentDidMount() {
+    this.setState({favorites: this.props.favorite});
+  }
   render() {
     return (
+
       <div>
-      <div><h3>Favorites</h3></div>
-      <div>{this.props.favorites}</div>
-      </div>
+      {console.log(this.props.favorite)}
+      {this.state.favorite}</div>
     );
   }
 }
