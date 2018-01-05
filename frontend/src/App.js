@@ -9,13 +9,8 @@ class App extends Component {
     return (
       <div className='App container-fluid'>
         <header className='App-header'>
-          <h1 className='App-title'>Hackathon Recipe Search</h1>
-          <h3 className='App-details'>
-            Input ingredients, food, both, or or just leave blank for random
-            lookup
-          </h3>
         </header>
-        <img src={Logo} alt='recipe hack' />
+        <img src={Logo} alt='header'/>
 
         <InputForm />
       </div>
