@@ -3,6 +3,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
+const path = require('path');
 const { routes } = require('./api/routes/routes');
 
 const corsOptions = {
@@ -13,14 +14,16 @@ const corsOptions = {
   credentials: true // enable set cookie
 };
 
-const port = process.env.PORT || '5000';
+// const port = process.env.PORT || '5000';
 
-app.set('port', port);
+// app.set('port', port);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
+app.use(express.static(__dirname + '/frontend/build'));
 routes(app);
 
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
-server.listen(port, () => console.log(`Running on path: ${port}`));
+// server.listen(port, () => console.log(`Running on path: ${port}`));
+app.listen(process.env.PORT || 5000);
