@@ -3,6 +3,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
+const path = require('path');
 const { routes } = require('./api/routes/routes');
 
 const corsOptions = {
@@ -19,6 +20,7 @@ app.set('port', port);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
+app.use(express.static(path.join(__dirname, 'frontend/public')));
 routes(app);
 
 const server = http.createServer(app);
