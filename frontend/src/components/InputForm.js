@@ -44,7 +44,7 @@ class InputForm extends Component {
                   alt={recipe.title}
                 />
                 <div className='card-body'>
-                  <div className=''>
+                  <div className='recipe--title'>
                     {recipe.title}
                   </div>
                   <div>
@@ -117,7 +117,7 @@ class InputForm extends Component {
             </div>
           </div>
         );
-      });
+      })
       this.setState({
         favorites: newFavoritesArray
       });
@@ -327,7 +327,7 @@ class InputForm extends Component {
         <div className='col-md-12'>
           <div>
             <RecipeCard className='row' recipes={this.state.recipes} />
-            <div class='page-buttons'>
+            <div className='page-buttons'>
               <form onSubmit={this.PrevPage}>
                 <button className='btn btn-primary'>Previous Page</button>
               </form>
@@ -336,6 +336,12 @@ class InputForm extends Component {
               </form>
             </div>
           </div>
+        </div>
+        <div className='col-md-12'>
+          <div>
+          {console.log(this.state.favorites)}
+            <Favorites favorites={this.state.favorites} />
+            </div>
         </div>
       </div>
     );
