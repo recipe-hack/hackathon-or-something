@@ -4,9 +4,10 @@ const axios = require('axios');
 // This probably isn't needed as we can get the same thing by not including any info in the queries
 const randomRecipes = (req, res) => {
   let rawData;
+  let randomPage = Math.floor(Math.random() * 100) + 1;
   axios({
     method: 'get',
-    url: 'http://www.recipepuppy.com/api/'
+    url: `http://www.recipepuppy.com/api/?p=${randomPage}`
   })
     .then(result => {
       rawData = result.data;
