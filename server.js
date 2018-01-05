@@ -20,7 +20,7 @@ const corsOptions = {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
-app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.use(express.static(__dirname + '/public'));
 routes(app);
 
 // const server = http.createServer(app);
