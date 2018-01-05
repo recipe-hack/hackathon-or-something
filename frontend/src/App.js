@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import InputForm from './components/InputForm';
 import { Container } from 'react-bootstrap';
+import Logo from './images/recipehack2.png';
 
 class App extends Component {
   render () {
@@ -14,6 +15,7 @@ class App extends Component {
             lookup
           </h3>
         </header>
+        <img src={Logo} alt='recipe hack' />
 
         <InputForm />
       </div>
