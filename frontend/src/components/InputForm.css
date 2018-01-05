@@ -1,0 +1,14 @@
+.page-buttons {
+  position: fixed;
+}
+
+.btn {
+  margin: 2px;
+}
+
+#card-ingredients {
+  color: black;
+}
+.recipe--title {
+  color: rgb(65, 131, 126);
+}

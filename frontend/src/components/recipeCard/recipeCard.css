@@ -1,0 +1,12 @@
+/*you do what you would normally do in the CSS file
+the className in the React file is what you would do.
+for example i have test, so you import this file in the REACT file and then you just use the name
+*/
+
+.test {
+  color: black;
+}
+
+.extraclass {
+  font-size: 14px;
+}
