@@ -6,7 +6,7 @@ const app = express();
 const { routes } = require('./api/routes/routes');
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:5000',
   methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
   preflightContinue: true,
   optionsSuccessStatus: 204,
