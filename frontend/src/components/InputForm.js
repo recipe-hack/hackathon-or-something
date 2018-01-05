@@ -310,9 +310,9 @@ class InputForm extends Component {
           </div>
         </div>
         <div className='col-md-12'>
+        <div>Favorites</div>
           <div>
-          {console.log(this.state.favorites)}
-            {this.state.favorites.map((favorite, index) => <Favorites key={index} favorite={favorite}/>) }
+            {this.state.favorites.map((favorite, index) => <Favorites key={index} favorite={favorite.recipe}/>) }
             </div>
         </div>
       </div>
