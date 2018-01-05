@@ -36,7 +36,7 @@ class InputForm extends Component {
       .then(data => {
         let recipes = data.map((recipe, index) => {
           return (
-            <div className='col-md-4' key={index}>
+            <div className='col-md-4 col-md-6' key={index}>
               <div className='card'>
                 <img
                   className='card-img-top'
@@ -99,6 +99,7 @@ class InputForm extends Component {
   submit (e) {
     e.preventDefault();
     const { ingredients, food } = this.state;
+
     return axios({
       method: 'get',
       url: `http://localhost:5000/api/recipes/?ingredients=${this.state
@@ -110,7 +111,7 @@ class InputForm extends Component {
       .then(data => {
         let recipes = data.map((recipe, index) => {
           return (
-            <div className='col-md-4' key={index}>
+            <div className='col-md-4 col-md-6' key={index}>
               <div className='card'>
                 <img
                   className='card-img-top'
@@ -173,7 +174,7 @@ class InputForm extends Component {
       .then(data => {
         let recipes = data.map((recipe, index) => {
           return (
-            <div className='col-md-4' key={index}>
+            <div className='col-md-4 col-md-6' key={index}>
               <div className='card'>
                 <img
                   className='card-img-top'
@@ -230,7 +231,7 @@ class InputForm extends Component {
       .then(data => {
         let recipes = data.map((recipe, index) => {
           return (
-            <div className='col-md-4' key={index}>
+            <div className='col-md-4 col-md-6' key={index}>
               <div className='card'>
                 <img
                   className='card-img-top'
@@ -272,19 +273,20 @@ class InputForm extends Component {
   render () {
     return (
       <div className='row'>
-        <div className='col-md-12'>
+        <div className='col-sm-12'>
+        <div className='row-fluid'>
           <form onSubmit={this.submit}>
-            <input
+            <input className='col-sm-3'
               type='text'
               value={this.state.ingredients}
               style={{
                 marginRight: '5px'
               }}
-              placeholder='ingredients'
+              placeholder='ingredients (ie. corn, peas)'
               onChange={event =>
                 this.setState({ ingredients: event.target.value })}
             />
-            <input
+            <input className='col-sm-2'
               type='text'
               value={this.state.food}
               style={{
@@ -293,20 +295,20 @@ class InputForm extends Component {
               placeholder='food'
               onChange={event => this.setState({ food: event.target.value })}
             />
-            <button className='btn btn-primary'>Submit</button>
+            <button className='btn btn-primary col-sm-2'>Submit</button>
           </form>
+          <form onSubmit={this.PrevPage}>
+            <button className='btn btn-primary col-sm-2'>Previous Page</button>
+          </form>
+          <form onSubmit={this.NextPage}>
+            <button className='btn btn-primary col-sm-2'>Next Page</button>
+          </form>
+        </div>
         </div>
         <div className='col-md-12'>
           <div>
             <RecipeCard className='row' recipes={this.state.recipes} />
-            <div className='page-buttons'>
-              <form onSubmit={this.PrevPage}>
-                <button className='btn btn-primary'>Previous Page</button>
-              </form>
-              <form onSubmit={this.NextPage}>
-                <button className='btn btn-primary'>Next Page</button>
-              </form>
-            </div>
+
           </div>
         </div>
         <div className='col-md-12'>
