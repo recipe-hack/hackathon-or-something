@@ -312,7 +312,7 @@ class InputForm extends Component {
           </div>
         </div>
         <div className='col-md-12'>
-        <div>Favorites</div>
+        <div className='favoritesHeader'>Favorites</div>
           <div>
             {this.state.favorites.map((favorite, index) => <Favorites key={index} favorite={favorite.recipe}/>) }
             </div>
