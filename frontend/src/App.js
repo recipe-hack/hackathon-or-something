@@ -8,10 +8,9 @@ class App extends Component {
   render () {
     return (
       <div className='App container-fluid'>
-        <header className='App-header'>
-        </header>
-        <img src={Logo} alt='header'/>
-
+        <div className='headerArea'>
+          <img src={Logo} alt='header' className='headerimg'/>
+        </div>
         <InputForm />
       </div>
     );

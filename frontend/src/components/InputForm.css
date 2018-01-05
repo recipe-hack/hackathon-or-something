@@ -10,3 +10,10 @@
 .recipe--title {
   color: rgb(65, 131, 126);
 }
+
+.favoritesHeader {
+  font-size: 50px;
+  color:#0F0D0D;
+  background-color: #939090;
+  margin-bottom: 20px;
+}
