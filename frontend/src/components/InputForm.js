@@ -24,6 +24,63 @@ class InputForm extends Component {
     this.favorite = this.favorite.bind(this);
   }
 
+  componentDidMount () {
+    const { ingredients, food } = this.state;
+    return axios({
+      method: 'get',
+      url: 'http://localhost:5000/api/recipes/random'
+    })
+      .then(results => {
+        return results.data.results;
+      })
+      .then(data => {
+        let recipes = data.map((recipe, index) => {
+          return (
+            <div className='col-md-4' key={index}>
+              <div className='card'>
+                <img
+                  className='card-img-top'
+                  src={recipe.thumbnail || 'http://img.recipepuppy.com/9.jpg'}
+                  alt={recipe.title}
+                />
+                <div className='card-body'>
+                  <div className=''>
+                    {recipe.title}
+                  </div>
+                  <div>
+                    Ingredients: {recipe.ingredients}
+                  </div>
+                  <a
+                    className='btn-primary btn'
+                    href={recipe.href}
+                    target='_blank'
+                  >
+                    View Recipe
+                  </a>
+                  <button
+                    className='btn btn-primary'
+                    onClick={this.favorite({ recipe })}
+                  >
+                    favorite
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        });
+        this.setState({ recipes: recipes });
+        this.setState({
+          oldingredients: this.state.ingredients,
+          oldfood: this.state.food,
+          oldpage: this.state.page
+        });
+        this.setState({ ingredients: '', food: '', page: 1 });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   favorite (recipe) {
     return () => {
       let newArr = this.state.favorites;
