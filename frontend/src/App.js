@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import InputForm from './components/InputForm';
-import RecipeCard from './components/recipeCard/recipeCard';
+
 
 class App extends Component {
   render() {
@@ -11,7 +11,6 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <InputForm />
-        <RecipeCard />
       </div>
     );
   }
