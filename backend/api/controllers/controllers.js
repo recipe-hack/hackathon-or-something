@@ -19,9 +19,9 @@ const randomRecipes = (req, res) => {
 
 const recipes = (req, res) => {
   let rawData;
-  const ingredients = req.query.ingredients;
-  const food = req.query.food;
-  const page = req.query.p;
+  const ingredients = req.query.ingredients || '';
+  const food = req.query.food || '';
+  const page = req.query.p || 1;
   axios({
     method: 'get',
     url: `http://www.recipepuppy.com/api/?i=${ingredients}&q=${food}&p=${page}`
