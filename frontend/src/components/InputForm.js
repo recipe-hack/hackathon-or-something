@@ -90,36 +90,8 @@ class InputForm extends Component {
         favorited: true
       });
 
-      let newFavoritesArray = this.state.favorites.map((recipe, index) => {
-        return (
-          <div className='col-md-4' key={index}>
-            <div className='card'>
-              <img
-                className='card-img-top'
-                src={recipe.thumbnail || 'http://img.recipepuppy.com/9.jpg'}
-                alt={recipe.title}
-              />
-              <div className='card-body'>
-                <div className=''>
-                  {recipe.title}
-                </div>
-                <div>
-                  Ingredients: {recipe.ingredients}
-                </div>
-                <a
-                  className='btn-primary btn'
-                  href={recipe.href}
-                  target='_blank'
-                >
-                  View Recipe
-                </a>
-              </div>
-            </div>
-          </div>
-        );
-      })
       this.setState({
-        favorites: newFavoritesArray
+        favorites: this.state.favorites
       });
     };
   }
@@ -340,7 +312,7 @@ class InputForm extends Component {
         <div className='col-md-12'>
           <div>
           {console.log(this.state.favorites)}
-            <Favorites favorites={this.state.favorites} />
+            {this.state.favorites.map((favorite, index) => <Favorites key={index} favorite={favorite}/>) }
             </div>
         </div>
       </div>
